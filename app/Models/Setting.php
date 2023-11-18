@@ -20,5 +20,6 @@ class Setting extends Model
         'meta_robots',
         'meta_googlebot',
         'meta_google_site_verification',
+        'content_id'
     ];
 }

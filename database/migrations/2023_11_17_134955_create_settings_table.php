@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Content;
 
 return new class extends Migration
 {
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->string('meta_robots')->nullable();
             $table->string('meta_googlebot')->nullable();
             $table->string('meta_google_site_verification')->nullable();
+            $table->foreignIdFor(Content::class)->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

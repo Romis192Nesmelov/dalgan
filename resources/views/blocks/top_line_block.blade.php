@@ -1,4 +1,4 @@
-<div id="top-line" class="w-100 d-flex align-items-center justify-content-between wow animate__animated animate__fadeIn" data-wow-delay=".1s">
+<div id="top-line" class="w-100 d-flex align-items-center justify-content-between">
     <a class="" href="{{ route('home') }}">
         <div class="logo-block d-lg-flex align-items-center justify-content-between">
             @include('blocks.logo_block')
@@ -13,7 +13,8 @@
         @include('blocks.button_block',[
             'primary' => false,
             'icon' => 'icon-envelop5',
-            'buttonText' => trans('content.feedback')
+            'buttonText' => trans('content.feedback'),
+            'dataTarget' => 'feedback-modal'
         ])
     </a>
 </div>

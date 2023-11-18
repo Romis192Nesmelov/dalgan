@@ -11,8 +11,8 @@ class ContentFactory extends Factory
 {
     private static $counter = -1;
     private $options = [
-        ['slug' => 'description', 'head' => 'Описание', 'href' => false],
-        ['slug' => 'structure', 'head' => 'Структура', 'href' => false],
+        ['slug' => 'description', 'head' => 'Описание'],
+        ['slug' => 'structure', 'head' => 'Структура'],
     ];
 
     /**
@@ -36,7 +36,6 @@ class ContentFactory extends Factory
 
         return [
             'slug' => $this->options[self::$counter]['slug'],
-            'href' => $this->options[self::$counter]['href'],
             'head' => $this->options[self::$counter]['head'],
             'short_text' => $shortText,
             'long_text' => $longText

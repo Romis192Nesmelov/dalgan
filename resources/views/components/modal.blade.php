@@ -7,7 +7,7 @@
     'yes_button_text' => trans('content.yes')
 ])
 
-<div {{ $attributes->class('modal fade') }} tabindex="-1" aria-labelledby="{{ $id }}Label" aria-hidden="true">
+<div id="{{ $id }}" {{ $attributes->class('modal fade') }} tabindex="-1" aria-labelledby="{{ $id }}Label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

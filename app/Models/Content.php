@@ -22,7 +22,6 @@ class Content extends Model
 
     protected $fillable = [
         'slug',
-        'href',
         'head',
         'short_text',
         'long_text'

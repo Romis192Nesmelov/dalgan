@@ -19,23 +19,26 @@ class BaseController extends Controller
     {
         $this->data['scroll'] = $slug;
         $this->activeMainMenu = 'home';
-        $this->data['content'] = Content::where('href',0)->select('head','short_text','slug')->get();
+        $this->data['content'] = Content::select('head','short_text','slug')->get();
+        $this->data['settings'] = Setting::where('content_id',null)->first();
         return $this->showView('home');
     }
 
     public function content(string $slug): View
     {
-        dd($slug);
-//        $this->activeMainMenu = 'structure';
-//        return $this->showView('home');
+        $this->data['scroll'] = null;
+        $this->activeMainMenu = $slug;
+        $this->data['content'] = Content::where('slug',$slug)->select('id','head','long_text')->first();
+        $this->data['settings'] = Setting::where('content_id',$this->data['content']->id)->first();
+        return $this->showView('content');
     }
 
     protected function showView($view) :View
     {
         $mainMenu = [['slug' => 'home', 'name' => trans('menu.home'), 'href' => false]];
-        $contents = Content::select('slug','head','href')->get();
+        $contents = Content::select('slug','head')->get();
         foreach ($contents as $content) {
-            $mainMenu[] = ['slug' => $content->slug, 'name' => $content->head, 'href' => $content->href];
+            $mainMenu[] = ['slug' => $content->slug, 'name' => $content->head, 'href' => true];
         }
         $mainMenu[] = ['slug' => 'contacts', 'name' => trans('menu.contacts'), 'href' => false];
 
@@ -46,7 +49,6 @@ class BaseController extends Controller
                 'mainMenu' => $mainMenu,
                 'contacts' => Contact::all(),
                 'metas' => $this->metas,
-                'settings' => Setting::first(),
                 'activeMainMenu' => $this->activeMainMenu
             ]
         ));

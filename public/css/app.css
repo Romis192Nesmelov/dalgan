@@ -9,11 +9,16 @@ h1, h2, h3, h4 {
 }
 
 h3 {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 a {
     color: #006838;
+}
+
+a:hover,
+a:active {
+    color: #02ab60;
 }
 
 .modal-content button.btn {
@@ -41,7 +46,6 @@ textarea:focus,
 textarea:active {
     outline: none !important;
     border: 2px solid #006838 !important;
-    box-shadow: none !important;
 }
 
 .btn-primary.disabled,
@@ -54,7 +58,6 @@ select:hover,
 textarea:hover,
 button.btn:hover {
     border-color: #006838;
-    box-shadow: none !important;
 }
 
 button.btn.btn-primary {
@@ -130,10 +133,12 @@ label {
 
 .form-check-input:checked {
     background-color: #006838;
+    border-color: #769384;
 }
 
 .error {
     color: red;
+    font-size: .8em;
 }
 
 #top-line {
@@ -173,6 +178,10 @@ label {
     font-size: 18px;
 }
 
+.navbar-toggler {
+    background-color: white;
+}
+
 .navbar a {
     color: #9d9d9d;
 }
@@ -198,15 +207,14 @@ label {
     color: white;
 }
 
+.section.color .error {
+    color: #fd7070;
+}
+
 .rounded-block {
     border-radius: 10px;
     padding: 20px;
     overflow: hidden;
-}
-
-.rounded-block.color {
-    background-color: #fdf4a5;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .owl-nav {
@@ -223,7 +231,7 @@ label {
     width: 15px;
     margin-left: 7px;
     margin-right: 7px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(2px 2px 2px #000);
 }
 
 .owl-carousel .owl-dots {
@@ -260,7 +268,7 @@ label {
     bottom: 50px;
     z-index: 1001;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(2px 2px 2px #000);
     display: none;
 }
 
@@ -290,7 +298,7 @@ label {
 #slider .slide p,
 #slider .slide button {
     color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(2px 2px 2px #000);
 }
 
 #slider .slide h1 {
@@ -301,7 +309,7 @@ label {
     font-size: 2em;
 }
 
-#contacts {
+#map {
     width: 100%;
     height: 600px;
     overflow: hidden;
@@ -309,14 +317,34 @@ label {
     border-top: 2px solid #006838;
 }
 
+div[data-scroll-destination=contacts] i {
+    color: #006838;
+    margin-left: 7px;
+    margin-right: 5px;
+    font-size: 1.2em;
+}
+
+div[data-scroll-destination=contacts] i:first-child {
+    margin-left: 0;
+}
+
 footer {
-    background-color: #404040;
+    background: url("../images/color_section.jpg") no-repeat;
+    background-size: cover;
+}
+
+footer img {
+    width: 100px;
+    margin-bottom: 15px;
+}
+
+footer .navbar-light .navbar-nav .nav-link {
     color: white;
 }
 
-footer h3,
-footer a {
-    color: white;
+footer .navbar-light .navbar-nav .nav-link:hover,
+footer .navbar-light .navbar-nav .nav-link:active {
+    color: #02ab60;
 }
 
 @media (max-width: 991px) {
@@ -330,7 +358,20 @@ footer a {
         background-color: white;
         padding: 10px;
         border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        filter: drop-shadow(2px 2px 2px #000);
+    }
+
+    footer .navbar-collapse {
+        top: auto;
+        bottom: 50px;
+    }
+
+    footer .navbar-light .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.25rem #02ab60;
+    }
+
+    footer .navbar-light .navbar-nav .nav-link {
+        color: grey;
     }
 
     #slider .slide h1 {

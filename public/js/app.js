@@ -5,18 +5,21 @@ $(document).ready(function () {
     $.mask.definitions['n'] = "[7-8]";
     $('input[name=phone]').mask("+n(999)999-99-99");
     window.messageModal = $('#message-modal');
-    // window.tokenField = $('input[name=_token]').val();
 
-    let wow = new WOW({
-        boxClass:     'wow',
-        animateClass: 'animated',
-        offset:       0,
-        mobile:       true,
-        live:         true,
-    });
-    wow.init();
+    // let wow = new WOW({
+    //     boxClass:     'wow',
+    //     animateClass: 'animated',
+    //     offset:       0,
+    //     mobile:       true,
+    //     live:         true,
+    // });
+    // wow.init();
 
-    // Fancybox init
+    var sr = ScrollReveal();
+    sr.reveal('#top-line', {duration:1000});
+    sr.reveal('#slider', {duration:2000});
+    sr.reveal('.section, footer', {duration:2500});
+
     bindFancybox();
     windowScroll();
 
@@ -44,7 +47,7 @@ $(document).ready(function () {
     ));
 });
 
-function bindFancybox() {
+const bindFancybox = () => {
     // Fancybox init
     $('.fancybox').fancybox({
         'autoScale': true,
@@ -58,7 +61,7 @@ function bindFancybox() {
     });
 }
 
-function windowScroll() {
+const  windowScroll = () => {
     let onTopButton = $('#on-top-button');
 
     $(window).scroll(function() {
@@ -86,17 +89,17 @@ function windowScroll() {
     });
 }
 
-function resetColorHrefsMenu() {
+const resetColorHrefsMenu = () => {
     $('li.nav-item').removeClass('active').blur();
 }
 
-function gotoScroll(scroll) {
+const gotoScroll = (scroll) => {
     $('html,body').animate({
-        scrollTop: $('div[data-scroll-destination="' + scroll + '"]').offset().top - (scroll === 'home' ? 0 : 72)
+        scrollTop: $('div[data-scroll-destination="' + scroll + '"]').offset().top/* - (scroll === 'home' ? 0 : 72)*/
     }, 1500, 'easeInOutQuint');
 }
 
-// function fixingMainMenu(windowScroll, firstCall) {
+// const fixingMainMenu = (windowScroll, firstCall) => {
 //     let topLine = $('#top-line');
 //
 //     if (windowScroll > 55 && !parseInt(topLine.css('top')) && $(window).width() > 992) {

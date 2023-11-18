@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <title>{{ $settings->title }}</title>
+    <title>Далган. {{ $settings->title }}</title>
     @foreach($metas as $meta => $params)
         @if ($settings[$meta])
             <meta {{ $params['name'] ? 'name='.$params['name'] : 'property='.$params['property'] }} content="{{ $settings[$meta] }}">
@@ -34,38 +34,38 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/loader.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}" />
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-{{--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>--}}
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+    <script type="text/javascript" src="{{ asset('js/scrollreveal.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.maskedinput.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/loader.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/feedback.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
 
+<div data-scroll-destination="home">
+    @include('blocks.top_line_block', ['href' => request()->path() != '/'])
+    @include('blocks.slider_block')
+</div>
+
 @yield('content')
 
-<footer class="w-100 pt-5 pb-0 section wow animate__animated animate__fadeIn" data-wow-delay=".4s">
-    <div class="container pl-4 pr-2">
-        <x-row>
-            <div class="d-none d-lg-block col-lg-2 d-flex justify-content-center align-items-start">
-                <img src="{{ asset('images/logo_white.svg') }}" class="w-50">
-            </div>
-            <div class="col-12 col-lg-4 col-md-6 mb-2">
-                @include('blocks.request_block', ['rowMode' => false])
-            </div>
-            <div class="col-12 col-lg-6 col-md-6 d-flex flex-column align-items-start">
-                @include('blocks.contacts_block', ['headMode' => true])
-            </div>
-        </x-row>
+<footer class="w-100 pt-3 pb-0 section">
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+        <img src="{{ asset('images/logo_white.svg') }}" />
+        @include('blocks.main_nav_block', [
+            'id' => 'footer-nav',
+            'href' => request()->path() != '/'
+        ])
     </div>
     <div class="w-100 bg-dark mt-3 pt-3 pb-2 text-center">
-        <p class="m-0">Copyright ©{{ date('Y') }} Dalgan</p>
+        <p class="m-0 text-white">Copyright ©{{ date('Y') }} Dalgan</p>
     </div>
 </footer>
 
@@ -73,6 +73,10 @@
 
 <x-modal id="message-modal" head="{{ trans('content.message') }}">
     <h4 class="text-center p-4">{{ session()->has('message') ? session()->get('message') : '' }}</h4>
+</x-modal>
+
+<x-modal id="feedback-modal" head="{{ trans('content.leave_request') }}">
+    @include('blocks.request_block', ['rowMode' => false])
 </x-modal>
 
 @if ($scroll)
