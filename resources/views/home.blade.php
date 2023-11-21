@@ -43,7 +43,7 @@
                     @endif
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-start justify-content-center">
-                    <img class="col-6 col-lg-12 col-md-12 mt-3 mb-4" src="{{ asset('images/landscape.jpg') }}" />
+                    <img class="w-100" src="{{ asset('images/landscape.jpg') }}" />
                 </div>
             </x-row>
         </div>
