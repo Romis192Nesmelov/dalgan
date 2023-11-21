@@ -9,6 +9,7 @@
                     'href' => $href,
                     'menuItem' => $menuItem,
                     'menuName' => $menuItem,
+                    'firstLoop' => $loop->first
                 ])
             @endforeach
         </ul>

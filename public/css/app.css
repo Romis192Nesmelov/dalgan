@@ -143,14 +143,19 @@ label {
 
 #top-line {
     padding: 10px 20px;
-    position: relative;
+    top: 0;
+    background-color: white;
+    position: fixed;
+    border-bottom: 1px solid grey;
     z-index: 999;
 }
 
-#top-line.top-fix {
-    position: fixed;
-    top: -80px;
-    z-index: 999;
+#top-image {
+    width: 100%;
+    margin-top: 71px;
+    height: 150px;
+    background: url("../images/top.jpg") no-repeat;
+    background-size: cover;
 }
 
 #top-line .logo-block {
@@ -217,44 +222,6 @@ label {
     overflow: hidden;
 }
 
-.owl-nav {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    z-index: 999;
-}
-
-.owl-carousel .owl-nav button {
-    width: 15px;
-    margin-left: 7px;
-    margin-right: 7px;
-    filter: drop-shadow(2px 2px 2px #000);
-}
-
-.owl-carousel .owl-dots {
-    width: 100%;
-    margin-top: 0 !important;
-    bottom: 35px;
-    position: absolute;
-    text-align: center;
-    z-index: 999;
-}
-
-.owl-carousel .owl-dots button.owl-dot {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-left: 10px;
-    background: white;
-}
-
-.owl-carousel .owl-dots button.owl-dot.active {
-    background: #b2b2b2;
-}
-
 #on-top-button {
     width: 48px;
     height: 48px;
@@ -275,46 +242,6 @@ label {
 #on-top-button i {
     margin-top: 15px;
     font-size: 20px;
-}
-
-#slider {
-    width: calc(100% - 20px);
-    margin: auto;
-    height: 400px;
-    padding: 0;
-    background-size: cover;
-}
-
-#slider .slide {
-    width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#slider .slide h1,
-#slider .slide p,
-#slider .slide button {
-    color: white;
-    filter: drop-shadow(2px 2px 2px #000);
-}
-
-#slider .slide h1 {
-    font-size: 5em;
-}
-
-#slider .slide p {
-    font-size: 2em;
-}
-
-#map {
-    width: 100%;
-    height: 600px;
-    overflow: hidden;
-    padding: 0;
-    border-top: 2px solid #006838;
 }
 
 div[data-scroll-destination=contacts] i {
@@ -373,23 +300,11 @@ footer .navbar-light .navbar-nav .nav-link:active {
     footer .navbar-light .navbar-nav .nav-link {
         color: grey;
     }
-
-    #slider .slide h1 {
-        font-size: 3em;
-    }
-
-    #slider .slide p {
-        font-size: 1em;
-    }
 }
 
 @media (max-width: 575px) {
     .navbar-collapse {
         margin-left: auto;
         right: 5px;
-    }
-
-    #slider .slide h1 {
-        font-size: 2em;
     }
 }

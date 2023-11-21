@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\Content;
 use App\Models\Setting;
-use App\Models\Slide;
 use Illuminate\View\View;
 
 class BaseController extends Controller
@@ -28,7 +27,7 @@ class BaseController extends Controller
     {
         $this->data['scroll'] = null;
         $this->activeMainMenu = $slug;
-        $this->data['content'] = Content::where('slug',$slug)->select('id','head','long_text')->first();
+        if (!$this->data['content'] = Content::where('slug',$slug)->select('id','head','long_text')->first()) abort(404);
         $this->data['settings'] = Setting::where('content_id',$this->data['content']->id)->first();
         return $this->showView('content');
     }
@@ -45,7 +44,6 @@ class BaseController extends Controller
         return view($view, array_merge(
             $this->data,
             [
-                'slider' => Slide::all(),
                 'mainMenu' => $mainMenu,
                 'contacts' => Contact::all(),
                 'metas' => $this->metas,

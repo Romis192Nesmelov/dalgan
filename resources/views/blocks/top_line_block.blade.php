@@ -1,6 +1,6 @@
-<div id="top-line" class="w-100 d-flex align-items-center justify-content-between">
+<div id="top-line" class="w-100 d-flex align-items-center justify-content-center">
     <a class="" href="{{ route('home') }}">
-        <div class="logo-block d-lg-flex align-items-center justify-content-between">
+        <div class="logo-block d-lg-flex align-items-center justify-content-between me-5">
             @include('blocks.logo_block')
             <img class="logo-text" src="{{ asset('images/logo_text.svg') }}" />
         </div>
@@ -9,12 +9,4 @@
         'id' => 'main-nav',
         'href' => $href
     ])
-    <a href="#" class="d-none d-sm-block">
-        @include('blocks.button_block',[
-            'primary' => false,
-            'icon' => 'icon-envelop5',
-            'buttonText' => trans('content.feedback'),
-            'dataTarget' => 'feedback-modal'
-        ])
-    </a>
 </div>

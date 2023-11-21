@@ -30,7 +30,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/icomoon/styles.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.fancybox.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/loader.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}" />
 
@@ -41,9 +40,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.maskedinput.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/loader.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/feedback.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </head>
 
@@ -51,7 +48,7 @@
 
 <div data-scroll-destination="home">
     @include('blocks.top_line_block', ['href' => request()->path() != '/'])
-    @include('blocks.slider_block')
+    <div id="top-image"></div>
 </div>
 
 @yield('content')
@@ -70,14 +67,6 @@
 </footer>
 
 <div id="on-top-button" data-scroll="home"><i class="icon-arrow-up12"></i></div>
-
-<x-modal id="message-modal" head="{{ trans('content.message') }}">
-    <h4 class="text-center p-4">{{ session()->has('message') ? session()->get('message') : '' }}</h4>
-</x-modal>
-
-<x-modal id="feedback-modal" head="{{ trans('content.leave_request') }}">
-    @include('blocks.request_block', ['rowMode' => false])
-</x-modal>
 
 @if ($scroll)
     <script>window.toScroll = "{{ $scroll }}";</script>

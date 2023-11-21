@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('head',50);
             $table->text('short_text');
-            $table->longText('long_text');
+            $table->longText('long_text')->nullable();
             $table->timestamps();
         });
     }

@@ -2,8 +2,6 @@
 window.phoneRegExp = /^((\+)?(\d)(\s)?(\()?[0-9]{3}(\))?(\s)?([0-9]{3})(\-)?([0-9]{2})(\-)?([0-9]{2}))$/gi;
 
 $(document).ready(function () {
-    $.mask.definitions['n'] = "[7-8]";
-    $('input[name=phone]').mask("+n(999)999-99-99");
     window.messageModal = $('#message-modal');
 
     // let wow = new WOW({
@@ -37,14 +35,6 @@ $(document).ready(function () {
             gotoScroll(self.attr('data-scroll'));
         }
     });
-
-    $('#slider').owlCarousel(owlSettings(
-        0,
-        true,
-        5000,
-        {0: {items: 1}},
-        true
-    ));
 });
 
 const bindFancybox = () => {
@@ -68,24 +58,25 @@ const  windowScroll = () => {
         let windowScroll = $(window).scrollTop(),
             win = $(this);
 
-        // fixingMainMenu(windowScroll);
+        if (win.scrollTop()) {
+            window.menuScrollFlag = true;
+            $('.section').each(function () {
+                let scrollData = $(this).attr('data-scroll-destination');
+                if ($(this).offset().top <= win.scrollTop() + 71 && scrollData) {
+                    window.menuScrollFlag = false;
+                    resetColorHrefsMenu();
+                    $('a[data-scroll=' + scrollData + ']').parents('li.nav-item').addClass('active');
+                }
+            });
 
-        window.menuScrollFlag = true;
-        $('.section').each(function () {
-            let scrollData = $(this).attr('data-scroll-destination');
-            if (!win.scrollTop()) {
-                resetColorHrefsMenu();
-                window.menuScrollFlag = false;
-            } else if ($(this).offset().top <= win.scrollTop() + 200 && scrollData) {
-                window.menuScrollFlag = false;
-                resetColorHrefsMenu();
-                $('a[data-scroll=' + scrollData + ']').parents('li.nav-item').addClass('active');
-            }
-        });
-
-        if (windowScroll > $(window).height()) {
-            onTopButton.fadeIn();
-        } else onTopButton.fadeOut();
+            if (windowScroll > $(window).height()) {
+                onTopButton.fadeIn();
+            } else onTopButton.fadeOut();
+        } else {
+            resetColorHrefsMenu();
+            window.menuScrollFlag = false;
+            $('a[data-scroll=home]').parents('li.nav-item').addClass('active');
+        }
     });
 }
 
@@ -95,30 +86,6 @@ const resetColorHrefsMenu = () => {
 
 const gotoScroll = (scroll) => {
     $('html,body').animate({
-        scrollTop: $('div[data-scroll-destination="' + scroll + '"]').offset().top/* - (scroll === 'home' ? 0 : 72)*/
+        scrollTop: $('div[data-scroll-destination="' + scroll + '"]').offset().top - 71
     }, 1500, 'easeInOutQuint');
-}
-
-// const fixingMainMenu = (windowScroll, firstCall) => {
-//     let topLine = $('#top-line');
-//
-//     if (windowScroll > 55 && !parseInt(topLine.css('top')) && $(window).width() > 992) {
-//         topLine.addClass('top-fix').animate({'top':0}, 'slow');
-//     } else topLine.removeClass('top-fix');
-// }
-
-const owlSettings = (margin, nav, timeout, responsive, autoplay) => {
-    let navButtonBlack1 = '<img src="/images/arrow_left.svg" />',
-        navButtonBlack2 = '<img src="/images/arrow_right.svg" />';
-
-    return {
-        margin: margin,
-        loop: autoplay,
-        nav: nav,
-        autoplay: autoplay,
-        autoplayTimeout: timeout,
-        dots: nav,
-        responsive: responsive,
-        navText: [navButtonBlack1, navButtonBlack2]
-    }
 }

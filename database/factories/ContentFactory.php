@@ -30,8 +30,10 @@ class ContentFactory extends Factory
             $shortText .= '<p>'.fake()->text(rand(300,500)).'</p>';
         }
 
-        for ($i=0;$i<rand(10,15);$i++) {
-            $longText .= '<p>'.fake()->text(rand(200,1000)).'</p>';
+        if (self::$counter === 0) {
+            for ($i=0;$i<rand(10,15);$i++) {
+                $longText .= '<p>'.fake()->text(rand(200,1000)).'</p>';
+            }
         }
 
         return [

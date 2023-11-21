@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Slide::factory(5)->create();
         Content::factory(2)->create();
         $this->call(ContactsSeeder::class);
         $this->call(SettingsSeeder::class);
