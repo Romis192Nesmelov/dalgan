@@ -19,7 +19,7 @@ $(document).ready(function () {
     sr.reveal('.section, footer', {duration:2500});
 
     bindFancybox();
-    windowScroll();
+    if (scrollCheck) windowScroll();
 
     if (window.toScroll) {
         setTimeout(function () {
@@ -27,14 +27,16 @@ $(document).ready(function () {
         },1000);
     }
 
-    window.menuScrollFlag = false;
-    $('a[data-scroll], div[data-scroll]').click(function (e) {
-        e.preventDefault();
-        let self = $(this);
-        if (!window.menuScrollFlag) {
-            gotoScroll(self.attr('data-scroll'));
-        }
-    });
+    if (scrollCheck) {
+        window.menuScrollFlag = false;
+        $('a[data-scroll], div[data-scroll]').click(function (e) {
+            e.preventDefault();
+            let self = $(this);
+            if (!window.menuScrollFlag) {
+                gotoScroll(self.attr('data-scroll'));
+            }
+        });
+    }
 });
 
 const bindFancybox = () => {
@@ -73,6 +75,7 @@ const  windowScroll = () => {
                 onTopButton.fadeIn();
             } else onTopButton.fadeOut();
         } else {
+            console.log(123121);
             resetColorHrefsMenu();
             window.menuScrollFlag = false;
             $('a[data-scroll=home]').parents('li.nav-item').addClass('active');

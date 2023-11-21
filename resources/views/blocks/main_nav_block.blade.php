@@ -8,8 +8,7 @@
                 @include('blocks.nav-item_block',[
                     'href' => $href,
                     'menuItem' => $menuItem,
-                    'menuName' => $menuItem,
-                    'firstLoop' => $loop->first
+                    'menuName' => $menuItem
                 ])
             @endforeach
         </ul>

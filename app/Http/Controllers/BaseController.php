@@ -35,9 +35,9 @@ class BaseController extends Controller
     protected function showView($view) :View
     {
         $mainMenu = [['slug' => 'home', 'name' => trans('menu.home'), 'href' => false]];
-        $contents = Content::select('slug','head')->get();
+        $contents = Content::select('slug','head', 'href')->get();
         foreach ($contents as $content) {
-            $mainMenu[] = ['slug' => $content->slug, 'name' => $content->head, 'href' => true];
+            $mainMenu[] = ['slug' => $content->slug, 'name' => $content->head, 'href' => $content->href];
         }
         $mainMenu[] = ['slug' => 'contacts', 'name' => trans('menu.contacts'), 'href' => false];
 

@@ -40,7 +40,8 @@ class ContentFactory extends Factory
             'slug' => $this->options[self::$counter]['slug'],
             'head' => $this->options[self::$counter]['head'],
             'short_text' => $shortText,
-            'long_text' => $longText
+            'long_text' => $longText,
+            'href' => (bool)$longText
         ];
     }
 }

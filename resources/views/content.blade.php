@@ -7,4 +7,5 @@
             {!! $content->long_text !!}
         </div>
     </div>
+    <script>const scrollCheck = false;</script>
 @endsection

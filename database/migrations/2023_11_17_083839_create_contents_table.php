@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('head',50);
             $table->text('short_text');
             $table->longText('long_text')->nullable();
+            $table->boolean('href');
             $table->timestamps();
         });
     }

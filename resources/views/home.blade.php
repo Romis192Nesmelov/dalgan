@@ -55,4 +55,5 @@
             <h3 class="w-100 text-center text-black-50 mb-3">@include('blocks.contacts_block')</h3>
         </div>
     </div>
+    <script>const scrollCheck = true;</script>
 @endsection

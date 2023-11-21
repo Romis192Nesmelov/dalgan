@@ -24,6 +24,7 @@ class Content extends Model
         'slug',
         'head',
         'short_text',
-        'long_text'
+        'long_text',
+        'href'
     ];
 }
