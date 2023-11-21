@@ -1,6 +1,7 @@
 body {
     font-family: 'Arial', 'Open Sans', sans-serif;
     overflow-x: hidden;
+    padding-top: 221px;
 }
 
 h1, h2, h3, h4 {
@@ -152,10 +153,12 @@ label {
 
 #top-image {
     width: 100%;
-    margin-top: 71px;
+    top: 71px;
     height: 150px;
+    position: fixed;
     background: url("../images/top.jpg") no-repeat;
     background-size: cover;
+    z-index: 999;
 }
 
 #top-line .logo-block {

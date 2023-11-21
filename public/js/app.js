@@ -64,7 +64,7 @@ const  windowScroll = () => {
             window.menuScrollFlag = true;
             $('.section').each(function () {
                 let scrollData = $(this).attr('data-scroll-destination');
-                if ($(this).offset().top <= win.scrollTop() + 71 && scrollData) {
+                if ($(this).offset().top <= win.scrollTop() + 221 && scrollData) {
                     window.menuScrollFlag = false;
                     resetColorHrefsMenu();
                     $('a[data-scroll=' + scrollData + ']').parents('li.nav-item').addClass('active');
@@ -75,7 +75,6 @@ const  windowScroll = () => {
                 onTopButton.fadeIn();
             } else onTopButton.fadeOut();
         } else {
-            console.log(123121);
             resetColorHrefsMenu();
             window.menuScrollFlag = false;
             $('a[data-scroll=home]').parents('li.nav-item').addClass('active');
@@ -89,6 +88,6 @@ const resetColorHrefsMenu = () => {
 
 const gotoScroll = (scroll) => {
     $('html,body').animate({
-        scrollTop: $('div[data-scroll-destination="' + scroll + '"]').offset().top - 71
+        scrollTop: $('div[data-scroll-destination="' + scroll + '"]').offset().top - 221
     }, 1500, 'easeInOutQuint');
 }
