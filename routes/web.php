@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\BaseController;
-use App\Http\Controllers\FeedbackController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +17,3 @@ Route::controller(BaseController::class)->group(function () {
     Route::get('/{slug?}', 'home')->name('home');
     Route::get('/content/{slug}', 'content')->name('content');
 });
-
-Route::post('/send-request', [FeedbackController::class, 'sendRequest'])->name('send_request');

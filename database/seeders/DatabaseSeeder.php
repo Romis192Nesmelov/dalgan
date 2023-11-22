@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Content::factory(2)->create();
+        Content::factory(3)->create();
         $this->call(ContactsSeeder::class);
         $this->call(SettingsSeeder::class);
     }

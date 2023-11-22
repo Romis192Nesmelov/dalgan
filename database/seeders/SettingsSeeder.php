@@ -16,11 +16,6 @@ class SettingsSeeder extends Seeder
     public function run()
     {
         $contents = Content::select('id','head')->get();
-        Setting::create([
-            'title' => 'дороги, адреса, маршруты, навигация',
-            'meta_keywords' => 'дороги адреса маршруты навигация',
-        ]);
-
         foreach ($contents as $content) {
             Setting::create([
                 'title' => $content->head,

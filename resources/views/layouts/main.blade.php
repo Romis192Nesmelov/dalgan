@@ -9,18 +9,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <title>Далган. {{ $settings->title }}</title>
+    <title>Далган. {{ $content->settings->title }}</title>
     @foreach($metas as $meta => $params)
-        @if ($settings[$meta])
-            <meta {{ $params['name'] ? 'name='.$params['name'] : 'property='.$params['property'] }} content="{{ $settings[$meta] }}">
+        @if ($content->settings[$meta])
+            <meta {{ $params['name'] ? 'name='.$params['name'] : 'property='.$params['property'] }} content="{{ $content->settings[$meta] }}">
         @endif
     @endforeach
 
-    @if (isset($description) && $description)
-        <meta name="description" content="{{ $description }}">
-    @endif
-
-    @include('blocks.favicon_block')
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons//favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons//favicon-16x16.png') }}">
+    {{--<link rel="manifest" href="/site.webmanifest">--}}
+    <link rel="mask-icon" href="{{ asset('favicons/safari-pinned-tab.svg" color="#5bbad5') }}">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +40,6 @@
 
     <script type="text/javascript" src="{{ asset('js/scrollreveal.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.maskedinput.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/loader.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
@@ -55,7 +56,7 @@
         </a>
         @include('blocks.main_nav_block', [
             'id' => 'main-nav',
-            'href' => request()->path() != '/'
+            'href' => request()->path() != '/' && request()->path() != 'contacts'
         ])
     </div>
     <div id="top-image"></div>
@@ -68,7 +69,7 @@
         <img src="{{ asset('images/logo_white.svg') }}" />
         @include('blocks.main_nav_block', [
             'id' => 'footer-nav',
-            'href' => request()->path() != '/'
+            'href' => request()->path() != '/' && request()->path() != 'contacts'
         ])
     </div>
     <div class="w-100 bg-dark mt-3 pt-3 pb-2 text-center">
@@ -77,10 +78,6 @@
 </footer>
 
 <div id="on-top-button" data-scroll="home"><i class="icon-arrow-up12"></i></div>
-
-@if ($scroll)
-    <script>window.toScroll = "{{ $scroll }}";</script>
-@endif
 
 </body>
 </html>

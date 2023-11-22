@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('head',50);
-            $table->text('short_text');
-            $table->longText('long_text')->nullable();
-            $table->boolean('href');
+            $table->text('text');
             $table->timestamps();
         });
     }

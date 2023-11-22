@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Content extends Model
 {
@@ -23,8 +24,11 @@ class Content extends Model
     protected $fillable = [
         'slug',
         'head',
-        'short_text',
-        'long_text',
-        'href'
+        'text'
     ];
+
+    public function settings(): HasOne
+    {
+        return $this->hasOne(Setting::class);
+    }
 }

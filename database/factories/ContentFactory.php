@@ -11,6 +11,7 @@ class ContentFactory extends Factory
 {
     private static $counter = -1;
     private $options = [
+        ['slug' => null, 'head' => 'Далган'],
         ['slug' => 'description', 'head' => 'Описание'],
         ['slug' => 'structure', 'head' => 'Структура'],
     ];
@@ -23,25 +24,22 @@ class ContentFactory extends Factory
     public function definition(): array
     {
         self::$counter++;
-        $shortText = '';
-        $longText = '';
-
-        for ($i=0;$i<3;$i++) {
-            $shortText .= '<p>'.fake()->text(rand(300,500)).'</p>';
-        }
+        $text = '';
 
         if (self::$counter === 0) {
+            for ($i=0;$i<5;$i++) {
+                $text .= '<p>'.fake()->text(rand(200,1000)).'</p>';
+            }
+        } else {
             for ($i=0;$i<rand(10,15);$i++) {
-                $longText .= '<p>'.fake()->text(rand(200,1000)).'</p>';
+                $text .= '<p>'.fake()->text(rand(200,1000)).'</p>';
             }
         }
 
         return [
             'slug' => $this->options[self::$counter]['slug'],
             'head' => $this->options[self::$counter]['head'],
-            'short_text' => $shortText,
-            'long_text' => $longText,
-            'href' => (bool)$longText
+            'text' => $text
         ];
     }
 }

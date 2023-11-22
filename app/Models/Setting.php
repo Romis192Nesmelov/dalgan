@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Setting extends Model
 {
@@ -22,4 +23,9 @@ class Setting extends Model
         'meta_google_site_verification',
         'content_id'
     ];
+
+    public function content(): BelongsTo
+    {
+        return $this->belongsTo(Content::class);
+    }
 }

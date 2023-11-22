@@ -5,11 +5,9 @@
     <div class="collapse navbar-collapse" id="navbar-{{ $id }}">
         <ul class="navbar-nav">
             @foreach($mainMenu as $menuItem)
-                @include('blocks.nav-item_block',[
-                    'href' => $href,
-                    'menuItem' => $menuItem,
-                    'menuName' => $menuItem
-                ])
+                <li id="{{ $id.'-'.$menuItem['route'] }}" class="nav-item {{ $activeMainMenu == $menuItem['route'] ? 'active' : '' }}">
+                    <a class="nav-link" {{ !$href && $menuItem['scroll'] ? 'data-scroll='.$menuItem['route'] : '' }} href="{{ !$href && $menuItem['scroll'] ? '/#' : ($href && $menuItem['scroll'] ? route('home',['slug' => $menuItem['route']]) :route('content',['slug' => $menuItem['route']])) }}">{{ $menuItem['name'] }}</a>
+                </li>
             @endforeach
         </ul>
     </div>
