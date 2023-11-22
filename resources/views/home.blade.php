@@ -4,7 +4,7 @@
     <div class="section">
         <div class="container">
             <x-row>
-                <h1 class="w-100 text-center mb-2 mb-lg-5">{{ $content->head }}</h1>
+{{--                <h1 class="w-100 text-center mb-2 mb-lg-5">{{ $content->head }}</h1>--}}
 {{--                <div class="col-lg-2 col-md-4 col-sm-12 d-flex align-items-start justify-content-center">--}}
 {{--                    <img class="col-6 col-lg-12 col-md-12 mb-4" src="{{ asset('images/3d_logo.jpg') }}" />--}}
 {{--                </div>--}}

@@ -38,7 +38,7 @@ a:active {
     position: fixed;
     background: url("../images/top.jpg") no-repeat;
     background-size: cover;
-    z-index: 999;
+    z-index: 990;
 }
 
 #top-line .logo-block {
@@ -155,6 +155,7 @@ footer .navbar-light .navbar-nav .nav-link:active {
         padding: 10px;
         border-radius: 5px;
         filter: drop-shadow(2px 2px 2px #000);
+        z-index: 999;
     }
 
     footer .navbar-collapse {
