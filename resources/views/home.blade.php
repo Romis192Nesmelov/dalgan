@@ -9,6 +9,7 @@
 {{--                    <img class="col-6 col-lg-12 col-md-12 mb-4" src="{{ asset('images/3d_logo.jpg') }}" />--}}
 {{--                </div>--}}
 {{--                <div class="col-lg-9 col-md-8 col-sm-12 ps-lg-5 d-flex flex-column">--}}
+                    <h1>{{ $content->head }}</h1>
                     {!! $content->text !!}
 {{--                </div>--}}
             </x-row>
