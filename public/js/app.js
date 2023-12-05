@@ -2,7 +2,7 @@ $(document).ready(function () {
     let sr = ScrollReveal();
     sr.reveal('#top-line', {duration:1500});
     sr.reveal('#top-image', {duration:2000});
-    sr.reveal('.container, footer', {duration:2500});
+    sr.reveal('.container', {duration:2500});
 
     bindFancybox();
     windowScroll();
@@ -20,7 +20,27 @@ $(document).ready(function () {
         window.menuScrollFlag = true;
         gotoScroll(window.scrollAnchor);
     }
+
+    windowResize();
+    $(window).resize(function() {
+        windowResize();
+    });
 });
+
+const windowResize = () => {
+    const footer = $('footer');
+    if ($('.section').height() + 480 < $(window).height()) {
+        footer.css({
+            'position':'fixed',
+            'bottom':0
+        });
+    } else {
+        footer.css({
+            'positions':'block',
+            'bottom':'auto'
+        });
+    }
+}
 
 const bindFancybox = () => {
     // Fancybox init
