@@ -5,21 +5,21 @@ $(document).ready(function () {
     sr.reveal('.container', {duration:2500});
 
     bindFancybox();
-    windowScroll();
+    // windowScroll();
 
-    window.menuScrollFlag = false;
-    $('a[data-scroll], div[data-scroll]').click(function (e) {
-        e.preventDefault();
-        let self = $(this);
-        if (!window.menuScrollFlag) {
-            gotoScroll(self.attr('data-scroll'));
-        }
-    });
-
-    if (window.scrollAnchor) {
-        window.menuScrollFlag = true;
-        gotoScroll(window.scrollAnchor);
-    }
+    // window.menuScrollFlag = false;
+    // $('a[data-scroll], div[data-scroll]').click(function (e) {
+    //     e.preventDefault();
+    //     let self = $(this);
+    //     if (!window.menuScrollFlag) {
+    //         gotoScroll(self.attr('data-scroll'));
+    //     }
+    // });
+    //
+    // if (window.scrollAnchor) {
+    //     window.menuScrollFlag = true;
+    //     gotoScroll(window.scrollAnchor);
+    // }
 
     windowResize();
     $(window).resize(function() {
